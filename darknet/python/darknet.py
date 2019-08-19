@@ -48,7 +48,7 @@ class METADATA(Structure):
 
 
 
-lib = CDLL("/home/vedant/projects/floorheatmap/darknet/libdarknet.so", RTLD_GLOBAL)
+lib = CDLL("/vedant/WalkMaps/darknet/libdarknet.so", RTLD_GLOBAL)
 # lib = CDLL("./libdarknet.so", RTLD_GLOBAL)
 lib.network_width.argtypes = [c_void_p]
 lib.network_width.restype = c_int
@@ -170,7 +170,7 @@ if __name__ == "__main__":
     print("Frames per second using video.get(cv2.CAP_PROP_FPS) : {0}".format(fps))
     net = load_net(b"cfg/yolov3.cfg", b"yolov3.weights", 0)
     meta = load_meta(b"cfg/coco.data")
-    cv2.namedWindow("img", cv2.WINDOW_NORMAL)
+    # cv2.namedWindow("img", cv2.WINDOW_NORMAL)
     while(1):
 
         ret, img = cap.read()
@@ -188,6 +188,15 @@ if __name__ == "__main__":
                     pt2 = (xmax, ymax)
                     cv2.rectangle(img, pt1, pt2, (0, 255, 0), 2)
                     cv2.putText(img, i[0].decode() + " [" + str(round(i[1] * 100, 2)) + "]", (pt1[0], pt1[1] + 20), cv2.FONT_HERSHEY_SIMPLEX, 1, [0, 255, 0], 4)
-            cv2.imshow("img", img)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+            
+            cv2.imwrite("",img)
+        #     cv2.imshow("img", img)
+        # if cv2.waitKey(1) & 0xFF == ord('q'):
+        #     break
+
+
+
+
+
+
+
